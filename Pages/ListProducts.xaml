@@ -1,0 +1,51 @@
+﻿<Page x:Class="Билет_20.Pages.ListProducts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Билет_20.Pages"
+        xmlns:model="clr-namespace:Билет_20.DB"
+        mc:Ignorable="d"
+        Title="ListProducts" Height="450" Width="800">
+    <Page.Resources >
+        <DataTemplate DataType="{x:Type model:User}" >
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="0.5" BorderBrush="Black">
+                    <Image MaxWidth="300" Source="{Binding UserPhoto}"/>
+                </Border>
+                <Border Grid.Column="1"  BorderThickness="0.5" BorderBrush="Black">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserSurname, StringFormat='Фамилия: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserName, StringFormat='Имя: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserFather, StringFormat='Отечсетво: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserPosition, StringFormat='Чморофессия: {0}'}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+      
+
+        <ListBox Grid.Row="2" HorizontalContentAlignment="Stretch" 
+                 ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}"/>
+    </Grid>
+</Page>
