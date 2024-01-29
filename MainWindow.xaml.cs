@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Билет_20;
+using Билет_20.DB;
 using Билет_20.Pages;
 using Билет_20.Static;
 
@@ -30,28 +30,35 @@ namespace Билет_20
             DataContext = PageNavigator.Get();
             PageNavigator.Get().CurrentPage = new LoginPage();
 
-            //var t = new (int, string)[]
-            //{
-            //    (3, "1.jpg"),
-            //    (5, "2.jpg"),
-            //    (6, "3.jpg"),
-            //    (1, "m1.jpg"),
-            //    (2, "m2.jpg"),
-            //    (4, "m3.jpg"),
-            //};
+            //    var t = new (int, string)[]
+            //    {
+            //        (1, "B111C5.jpeg"),
+            //        (2, "E112C6.jpg"),
+            //        (3, "T238C7.jpg"),
+            //        (4, "M112C8.jpg"),
+            //        (5, "M294G9.jpg"),
+            //        (6, "N283K3.jpg"),
+            //        (7, "L293S9.jpg"),
+            //        (8, "M398S9.jpg"),
+            //        (9, "S384K2.jpg"),
+            //        (10, "K839K3.jpg"),
+            //    };
 
-            //User10Context context = new User10Context();
-            //var products = context.Users.ToList();
-            //foreach(var tt in t)
-            //{
-            //    var p = products.First(s => s.Userid == tt.Item1);
-            //    if (p != null)
-            //        p.UserPhoto = File.ReadAllBytes(tt.Item2);
+            //    User10Context context = new User10Context();
+            //    var products = context.Products.ToList();
+            //    foreach(var tt in t)
+            //    {
+            //        var p = products.First(s => s.ProductId == tt.Item1);
+            //        if (p != null)
+            //            p.ProductPhoto = File.ReadAllBytes(tt.Item2);
+            //    }
+            //    context.SaveChanges();
             //}
-            //context.SaveChanges();
+
+
+
         }
-
-
-        
     }
 }
+
+

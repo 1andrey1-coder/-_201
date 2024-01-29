@@ -14,7 +14,7 @@
             <PasswordBox x:Name="passwordBox" />
             <StackPanel>
                 <Button Content="Авторизация" Command="{Binding RunLogin}" />
-                <Button Content="Войти как гость(просто есть, не работает)"/>
+                <Button Content="Войти как гость" Command="{Binding GuestLogin}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Visibility="{Binding CapchaVisibility}">

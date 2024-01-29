@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
+using Билет_20.DB;
 using Билет_20.Pages;
 using Билет_20.Static;
 
@@ -24,6 +25,7 @@ namespace Билет_20.mvvm.vm
 
         string generateCapcha;
         public CommandVm RunLogin { get; set; }
+        public CommandVm GuestLogin { get; set; }
 
 
         public Visibility CapchaVisibility
@@ -69,7 +71,7 @@ namespace Билет_20.mvvm.vm
                         return;
                     }
 
-                    User.Loggen = user;
+                    Static.AuthUser.Loggen = user;
                     PageNavigator.Get().CurrentPage = new ListProducts();
                 }
 
@@ -77,7 +79,15 @@ namespace Билет_20.mvvm.vm
                 {
                     MessageBox.Show("Ошибка какая а хрен знает");
                 }
-            }, () => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(passwordBox.Password));
+
+            },
+            () => !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(passwordBox.Password));
+
+            GuestLogin = new CommandVm(() =>
+            {
+                //Static.User.Logged = new DB.User { UserId = -1, UserName = "Гость" };
+                PageNavigator.Get().CurrentPage = new ListProducts();
+            }, () => true);
 
         }
         //97 123

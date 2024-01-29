@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Билет_20.DB;
 
 namespace Билет_20.Static
 {
-    internal partial class User
+    internal partial class AuthUser
     {
-        static Билет_20.DB.User logged = new();
+        static User logged = new();
 
-        public static Билет_20.DB.User Loggen
+        public static User Loggen
         {
             get => logged;
             set
@@ -19,6 +20,6 @@ namespace Билет_20.Static
                 LoggedChanged?.Invoke(null, value);
             }
         }
-        public static event EventHandler<Билет_20.DB.User> LoggedChanged;
+        public static event EventHandler<User> LoggedChanged;
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Билет_20;
 using Билет_20.DB;
 
 namespace Билет_20.Static

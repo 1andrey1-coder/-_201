@@ -12,10 +12,10 @@ namespace Билет_20.mvvm.vm
 {
     class MainVm: BaseVm
     {
-        public string UserFIO
-        {
-            get => $"{User.UserSurname} {User.UserName} {User.UserFather}";
-        }
+        //public string UserFIO
+        //{
+        //    get => $"{User.UserSurname} {User.UserName} {User.UserFather}";
+        //}
 
 
     }

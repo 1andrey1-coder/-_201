@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Билет_20.Pages"
         xmlns:model="clr-namespace:Билет_20.DB"
         mc:Ignorable="d"
-        Title="ListProducts" Height="450" Width="800">
+        Title="ListProducts">
     <Page.Resources >
-        <DataTemplate DataType="{x:Type model:User}" >
+        <DataTemplate DataType="{x:Type model:Product}" >
             <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -16,14 +16,21 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Border BorderThickness="0.5" BorderBrush="Black">
-                    <Image MaxWidth="300" Source="{Binding UserPhoto}"/>
+                    <Image MaxWidth="300" Source="{Binding ProductPhoto}"/>
                 </Border>
                 <Border Grid.Column="1"  BorderThickness="0.5" BorderBrush="Black">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserSurname, StringFormat='Фамилия: {0}'}"/>
-                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserName, StringFormat='Имя: {0}'}"/>
-                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserFather, StringFormat='Отечсетво: {0}'}"/>
-                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding UserPosition, StringFormat='Чморофессия: {0}'}"/>
+                    <StackPanel Width="400">
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductArticle, StringFormat='Фамилия: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductDiscription, StringFormat='Имя: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductTitle, StringFormat='Отечсетво: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductCost, StringFormat='Чморофессия(цена): {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductPoint, StringFormat='Единица измерения: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductMaxDiscount, StringFormat='Макс. Скидка: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductManufactuer.ManufactuerTitle, StringFormat='Производитель: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductProvider.ProviderTitle, StringFormat='Поставщик: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductCategory.CategoryTitle, StringFormat='Категория: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductCurrentDiscount, StringFormat='Текущ. Скидка: {0}'}"/>
+                        <TextBlock Style="{StaticResource textBlock}"  Text="{Binding ProductCount, StringFormat='Количество на складе: {0}'}"/>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -34,18 +41,38 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-      
 
-        <ListBox Grid.Row="2" HorizontalContentAlignment="Stretch" 
-                 ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}"/>
+        <StackPanel  Orientation="Horizontal" >
+            
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock Text="Поиск" />
+            <TextBox Height="23" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock  Text="Производитель" />
+            <ComboBox Height="23"
+                  ItemsSource="{Binding Manufactuers}"
+                  SelectedItem="{Binding SelectedManufactuer}"
+                  DisplayMemberPath="ManufactuerTitle"/>
+        </StackPanel>
+        
+        <StackPanel  Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock Text="Сортировка" />
+            <ComboBox Height="23" 
+                  ItemsSource="{Binding SortValues}"
+                  SelectedItem="{Binding SelectedSortValue}"/>
+        </StackPanel>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Grid.ColumnSpan="4"
+                 ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"/>
     </Grid>
 </Page>
